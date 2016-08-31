@@ -588,6 +588,15 @@
             slider.setProps(slider.computedW, "setTotal");
           }
         }
+		
+		if ( slider.pagingCount === 1) {  // always reset slider position back to zero if no additional pages to cycle through.
+			var animationSpeed = slider.vars.animationSpeed;    //save animation speed to reset later
+			slider.vars.animationSpeed = 0;
+			slider.flexAnimate(0);                  //position index for desired slide goes here
+			slider.vars.animationSpeed = animationSpeed;
+			//
+		}
+		
       },
       smoothHeight: function(dur) {
         if (!vertical || fade) {
